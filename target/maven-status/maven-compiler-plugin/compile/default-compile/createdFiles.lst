@@ -1,0 +1,15 @@
+fr\iglee42\herojobs\jobs\FarmerJob.class
+fr\iglee42\herojobs\utils\Registers.class
+fr\iglee42\herojobs\jobs\BucheronJob.class
+fr\iglee42\herojobs\jobs\MagicienJob.class
+fr\iglee42\herojobs\utils\MySQL.class
+fr\iglee42\herojobs\events\QuitEvent.class
+fr\iglee42\herojobs\utils\JobPlayer.class
+fr\iglee42\herojobs\jobs\ChasseurJob.class
+fr\iglee42\herojobs\utils\ActionBar.class
+fr\iglee42\herojobs\events\BlockBreak.class
+fr\iglee42\herojobs\commands\GetxpCMD.class
+fr\iglee42\herojobs\jobs\MineurJob.class
+fr\iglee42\herojobs\Main.class
+fr\iglee42\herojobs\events\JoinEvent.class
+fr\iglee42\herojobs\utils\Job.class

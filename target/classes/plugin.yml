@@ -1,0 +1,7 @@
+name: HeroJobs
+version: 1.0
+main: fr.iglee42.herojobs.Main
+author: iglee42
+
+commands:
+  getxp:
