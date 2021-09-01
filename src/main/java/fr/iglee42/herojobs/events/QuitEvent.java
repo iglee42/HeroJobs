@@ -12,6 +12,7 @@ public class QuitEvent implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event){
         for (Job j : Main.INSTANCE.getJobs()){
+            System.out.println(j.getName());
             if (JobPlayer.getPlayer(event.getPlayer()).isNew()){
                 Main.INSTANCE.getMysql().update("INSERT INTO `"+j.getName().toLowerCase()+"`(`player_name`, `level`, `xp`) VALUES (\""+event.getPlayer().getName()+"\","+j.getLevels().get(event.getPlayer())+","+j.getXp().get(event.getPlayer())+")");
             } else {
@@ -19,6 +20,7 @@ public class QuitEvent implements Listener {
             }
         }
         JobPlayer.getPlayer(event.getPlayer()).delete();
+
     }
 
 }

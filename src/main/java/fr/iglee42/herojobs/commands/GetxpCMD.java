@@ -12,8 +12,7 @@ public class GetxpCMD implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            Job j = Main.INSTANCE.getJobs().get(0);
-            p.sendMessage("Vous avez " + j.getLevels().get(p) + " niveau avec " + j.getXp().get(p) + " dans le metier de " + j.getName());
+            Main.INSTANCE.getJobs().forEach(j -> p.sendMessage("Vous avez " + j.getLevels().get(p) + " niveau avec " + j.getXp().get(p) + " xp dans le metier de " + j.getName()));
         }
         return true;
     }

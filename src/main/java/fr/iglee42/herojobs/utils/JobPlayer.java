@@ -3,6 +3,8 @@ package fr.iglee42.herojobs.utils;
 import fr.iglee42.herojobs.Main;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class JobPlayer {
 
     private Player player;
@@ -14,9 +16,12 @@ public class JobPlayer {
         Main.INSTANCE.getPlayers().add(this);
     }
 
+
     public void delete(){
         Main.INSTANCE.getPlayers().remove(this);
     }
+
+
 
     public Player getPlayer() {
         return player;

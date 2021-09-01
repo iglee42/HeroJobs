@@ -3,20 +3,23 @@ package fr.iglee42.herojobs.utils;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionType;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Job {
 
-    private String name;
-    private Map<Player,Integer> levels,xp;
-    private Map<Integer,Integer> xpLevels;
-    private int maxLevel;
+    private final String name;
+    private final Map<Player,Integer> levels;
+    private final Map<Player,Integer> xp;
+    private final Map<Integer,Integer> xpLevels;
+    private final int maxLevel;
     private Map<Integer,Map<Material,Integer>> breakBlockXp;
     private Map<Integer,Map<EntityType,Integer>> entityKillXp;
     private Map<Integer,Map<Material,Integer>> craftXp;
-
+    private Map<Integer, Map<Material,Integer>> cookXp;
+    private Map<Integer, Map<PotionType,Integer>> potionXp;
 
 
     public Job(String name, int maxLevel) {
@@ -28,27 +31,32 @@ public abstract class Job {
         this.breakBlockXp = new HashMap<>();
         this.entityKillXp = new HashMap<>();
         this.craftXp = new HashMap<>();
-        init();
+        this.cookXp = new HashMap<>();
     }
 
     public void addXp(Player p, int xpToAdd){
+        System.out.println("Xp ajoutÃ©");
         if (xpToAdd == 0) return;
-        ActionBar bar = new ActionBar("§2Vous avez gagné §6" + xpToAdd + " §2d'xp pour le metier de §6" + this.name);
+        ActionBar bar = new ActionBar("Â§2Vous avez gagnÃ© Â§6" + xpToAdd + " Â§2d'xp pour le metier de Â§6" + this.name);
         bar.sendToPlayer(p);
         int currentXp = xp.get(p);
         int level = levels.get(p);
-        if ((currentXp + xpToAdd) > xpLevels.get(level) ){
+        if ((currentXp + xpToAdd) >= xpLevels.get(level) ){
             int newXp = currentXp + xpToAdd;
             int xpNewLevel = newXp - xpLevels.get(level);
             levels.remove(p);
             levels.put(p,level + 1);
+            Title.sendTitle(p,20,5*20, 20,"Â§2Bravo vous avez passer","Â§6le niveau" + (level + 1)+ "dans le metier de Â§2" + this.getName());
+            xp.remove(p);
+            xp.put(p,0);
             if (xpNewLevel != 0){
                 addXp(p,xpNewLevel);
             }
-            return;
+        } else {
+            xp.remove(p);
+            xp.put(p,currentXp + xpToAdd);
         }
-        xp.remove(p);
-        xp.put(p,currentXp + xpToAdd);
+
     }
 
     public String getName() {
@@ -82,6 +90,10 @@ public abstract class Job {
         return craftXp;
     }
 
+    public Map<Integer, Map<Material, Integer>> getCookXp() {
+        return cookXp;
+    }
+
     public void init(){
         this.xpLevels.put(0,200);
         this.xpLevels.put(1,400);
@@ -105,4 +117,16 @@ public abstract class Job {
         this.xpLevels.put(19,4400);
         this.xpLevels.put(20,4600);
     }
+
+    public void initBreak(){this.breakBlockXp = new HashMap<>();}
+
+    public void initCook(){this.cookXp = new HashMap<>();}
+
+    public void initKill(){this.entityKillXp = new HashMap<>();}
+
+    public void initCraft(){this.craftXp = new HashMap<>();}
+
+    public void initPotion(){this.potionXp = new HashMap<>();}
+
+
 }

@@ -15,7 +15,7 @@ public class JoinEvent implements Listener {
     public void onJoin(PlayerJoinEvent event){
         for (Job j : Main.INSTANCE.getJobs()){
             final boolean[] isNew = new boolean[1];
-            Main.INSTANCE.getMysql().query("SELECT * FROM `"+j.getName().toLowerCase()+"` WHERE `player_name`=\""+ event.getPlayer().getName()+"\"",rs->{
+            Main.INSTANCE.getMysql().query("SELECT * FROM `"+j.getName().toLowerCase()+"` WHERE `player_name`=\""+event.getPlayer().getName()+"\" ",rs->{
                 try {
                     if (rs.next()){
                         j.getLevels().put(event.getPlayer(), rs.getInt("level"));
@@ -26,11 +26,12 @@ public class JoinEvent implements Listener {
                         j.getXp().put(event.getPlayer(), 0);
                         isNew[0] = true;
                     }
+                    new JobPlayer(event.getPlayer(),isNew[0]);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
             });
-            new JobPlayer(event.getPlayer(),isNew[0]);
+
         }
     }
 }
