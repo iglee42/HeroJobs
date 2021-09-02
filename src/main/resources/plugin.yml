@@ -4,4 +4,5 @@ main: fr.iglee42.herojobs.Main
 author: iglee42
 
 commands:
-  getxp:
+  jobs:
+    description: Permet d'ouvrir le menu des jobs

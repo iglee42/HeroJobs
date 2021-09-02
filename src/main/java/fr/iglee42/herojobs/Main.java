@@ -36,6 +36,7 @@ public class Main extends JavaPlugin implements Listener {
         saveDefaultConfig();
         Registers.registerEvents(this);
         Registers.registerCommands(this);
+        Bukkit.getPluginManager().registerEvents(this,this);
         initConnection();
         createJobs();
         initTables();

@@ -58,4 +58,65 @@ public class FarmerJob extends Job {
             this.getBreakBlockXp().put(i,maps);
         }
     }
+
+
+    @Override
+    public void initCraft() {
+        super.initCraft();
+        for (int i = 0;i <= 4 ; i++){
+
+            Map<Material,Integer> maps = new HashMap<>();
+            maps.put(Material.BREAD,5);
+            this.getCraftXp().put(i,maps);
+        }
+        for (int i = 5;i <= 9 ; i++){
+
+            Map<Material,Integer> maps = new HashMap<>();
+            maps.put(Material.BREAD,4);
+            this.getCraftXp().put(i,maps);
+        }
+        for (int i = 10; i <= 14; i++){
+
+            Map<Material,Integer> maps = new HashMap<>();
+            maps.put(Material.PUMPKIN_PIE,5);
+            this.getCraftXp().put(i,maps);
+        }
+        for (int i = 15; i < 20; i++){
+
+            Map<Material,Integer> maps = new HashMap<>();
+            maps.put(Material.PUMPKIN_PIE,4);
+            this.getCraftXp().put(i,maps);
+        }
+
+    }
+
+    @Override
+    public void initCook() {
+        super.initCook();
+        for (int i = 0;i <= 4 ; i++){
+
+            Map<Material,Integer> maps = new HashMap<>();
+            maps.put(Material.BAKED_POTATO,5);
+            this.getCookXp().put(i,maps);
+        }
+        for (int i = 5;i <= 9 ; i++){
+
+            Map<Material,Integer> maps = new HashMap<>();
+            maps.put(Material.BAKED_POTATO,4);
+            this.getCookXp().put(i,maps);
+        }
+        for (int i = 10; i <= 14; i++){
+
+            Map<Material,Integer> maps = new HashMap<>();
+            maps.put(Material.BAKED_POTATO,3);
+            this.getCookXp().put(i,maps);
+        }
+        for (int i = 15; i < 20; i++){
+
+            Map<Material,Integer> maps = new HashMap<>();
+            maps.put(Material.BAKED_POTATO,2);
+            this.getCookXp().put(i,maps);
+        }
+
+    }
 }

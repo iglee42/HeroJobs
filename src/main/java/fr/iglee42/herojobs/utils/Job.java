@@ -3,6 +3,7 @@ package fr.iglee42.herojobs.utils;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 import java.util.HashMap;
@@ -19,7 +20,7 @@ public abstract class Job {
     private Map<Integer,Map<EntityType,Integer>> entityKillXp;
     private Map<Integer,Map<Material,Integer>> craftXp;
     private Map<Integer, Map<Material,Integer>> cookXp;
-    private Map<Integer, Map<PotionType,Integer>> potionXp;
+    private Map<Integer, Map<PotionEffectType,Integer>> potionXp;
 
 
     public Job(String name, int maxLevel) {
@@ -32,6 +33,7 @@ public abstract class Job {
         this.entityKillXp = new HashMap<>();
         this.craftXp = new HashMap<>();
         this.cookXp = new HashMap<>();
+        this.potionXp = new HashMap<>();
     }
 
     public void addXp(Player p, int xpToAdd){
@@ -92,6 +94,10 @@ public abstract class Job {
 
     public Map<Integer, Map<Material, Integer>> getCookXp() {
         return cookXp;
+    }
+
+    public Map<Integer, Map<PotionEffectType, Integer>> getPotionXp() {
+        return potionXp;
     }
 
     public void init(){
